@@ -33,3 +33,5 @@ To spin down the ec2-route53 quasiparticle:
 
 
 To do an update, make a POST request after setting the new desired configuration:
+
+`curl -X POST http://localhost:5000/higgs`
