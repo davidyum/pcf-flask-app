@@ -1,0 +1,49 @@
+{
+    "pcf_name": "pcf-example2",
+    "flavor": "ec2_route53",
+    "particles": [{
+            "flavor": "ec2_instance",
+            "multiplier": 1,
+            "aws_resource": {
+                "custom_config": {
+                    "instance_name": "pcf-ec2-testing",
+                    "tags": {
+                        "OwnerContact": "you@yourcompany.com"
+                    }
+                },
+                "ImageId": "ami-011b3ccf1bd6db744",
+                "InstanceType": "t2.micro",
+                "KeyName": "test",
+                "MaxCount": 1,
+                "MinCount": 1,
+                "SecurityGroupIds": [
+                    "sg-0b55ef2c5dc2d4dd3"
+                ],
+                "SubnetId": "subnet-37eb7319",
+                "KeyName": "test",
+                "UserData": "echo abc123",
+                "IamInstanceProfile": {
+                    "Arn": "arn:aws:iam::471916315075:instance-profile/admin"
+                },
+                "BlockDeviceMappings": [{
+                    "DeviceName": "/dev/sda1",
+                    "Ebs": {
+                        "DeleteOnTermination": true,
+                        "VolumeSize": 100,
+                        "VolumeType": "gp2"
+                    }
+                }]
+            }
+        },
+        {
+            "flavor": "route53_record",
+            "aws_resource": {
+                "Name": "test2@test.com",
+                "HostedZoneId": "Z79MUHEUH5265",
+                "TTL": 300,
+                "ResourceRecords": [],
+                "Type": "A"
+            }
+        }
+    ]
+}
